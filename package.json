@@ -1,0 +1,23 @@
+{
+  "name": "oauth2-refresh-token",
+  "version": "1.0.0",
+  "description": "Keeps auth token refreshed, manages refresh token.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noblesamurai/oauth2-refresh-token.git"
+  },
+  "keywords": [
+    "token",
+    "refresh"
+  ],
+  "author": "Tim Allen",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/noblesamurai/oauth2-refresh-token/issues"
+  },
+  "homepage": "https://github.com/noblesamurai/oauth2-refresh-token#readme"
+}
