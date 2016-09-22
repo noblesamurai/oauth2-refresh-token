@@ -2,12 +2,12 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('refresh_tokens', function (table) {
     table.increments();
-    table.string('refresh_token');
+    table.string('refresh_token', 512);
     table.timestamps();
   }).then(function() {
     return knex.schema.createTableIfNotExists('access_tokens', function (table) {
       table.increments();
-      table.string('access_token');
+      table.string('access_token', 512);
       table.timestamps();
     });
   });
