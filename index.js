@@ -6,7 +6,7 @@ const knex = require('knex')(db),
   var migrated;
   function migrate() {
     if (migrated) return migrated;
-    migrated = knex.migrate.latest();
+    migrated = knex.migrate.latest({ directory: __dirname + '/migrations' });
     return migrated;
   }
 
