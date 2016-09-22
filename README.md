@@ -27,3 +27,10 @@ const credentials = {
   }
 }
 ```
+
+## Local dev
+```
+docker-compose run psql psql -h postgres -c 'create database "refresh-token-test"' -U postgres
+docker-compose run node ./node_modules/.bin/knex migrate:latest --env test
+docker-compose run node npm test
+```
