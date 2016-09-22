@@ -3,7 +3,7 @@ var expect = require('chai').expect,
     db = require('../knexfile').test,
     auth = { tokenHost: 'https://login.live.com', tokenPath: '/oauth20_token.srf' },
     client = { id: 'tom', secret: 'jeff' },
-    index = require('..')(db, auth, client, 'initial_refresh_token');
+    index = require('..')(db, { auth, client }, 'initial_refresh_token');
 
 describe('oauth2-refresh-token', function() {
   var authRequests;

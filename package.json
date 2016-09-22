@@ -15,7 +15,7 @@
     "refresh"
   ],
   "author": "Tim Allen",
-  "license": "BSD 3-Clause",
+  "license": "BSD",
   "bugs": {
     "url": "https://github.com/noblesamurai/oauth2-refresh-token/issues"
   },

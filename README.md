@@ -6,12 +6,24 @@ Call `getAccessToken()` to get the latest access token.  It will not auto-refres
 
 Usage:
 ```javascript
-var refreshToken = require('oauth2-token-refresh')('postgres://somedbserver/somedb', {/* auth details*/}, {/* client details*/}, 'initial refresh token');
+var refreshToken = require('oauth2-token-refresh')('postgres://somedbserver/somedb', credentials, 'initial refresh token');
 
 refreshToken.refresh(); //returns a promise
 refreshToken.getAccessToken().then(function(result) {
   console.log(result);
 });
 ```
-`auth` and `client` are objects are required by the [`simple-oath2`](https://github.com/lelylan/simple-oauth2) module.
+`credentials` are passed through to  [`simple-oath2`](https://github.com/lelylan/simple-oauth2) and take the form:
 
+```javascript
+// Set the configuration settings
+const credentials = {
+  client: {
+    id: '<client-id>',
+    secret: '<client-secret>'
+  },
+  auth: {
+    tokenHost: 'https://api.oauth.com'
+  }
+}
+```

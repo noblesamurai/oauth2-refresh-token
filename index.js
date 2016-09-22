@@ -1,10 +1,7 @@
-module.exports = function(db, auth, client, initialRefreshToken) {
+module.exports = function(db, credentials, initialRefreshToken) {
 const knex = require('knex')(db),
       SimpleOAuth2 = require('simple-oauth2'),
-      oauth2 = SimpleOAuth2.create({
-        auth: auth,
-        client: client
-      });
+      oauth2 = SimpleOAuth2.create(credentials);
 
   function latestToken(type) {
     return knex(type + '_tokens').orderBy('id', 'desc').first(type + '_token').then(function(result) {
