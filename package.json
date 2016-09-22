@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/noblesamurai/oauth2-refresh-token/issues"
   },
-  "homepage": "https://github.com/noblesamurai/oauth2-refresh-token#readme"
+  "homepage": "https://github.com/noblesamurai/oauth2-refresh-token#readme",
   "dependencies": {
     "knex": "^0.12.1",
     "pg": "^6.1.0",
