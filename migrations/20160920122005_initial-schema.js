@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
   }).then(function() {
     return knex.schema.createTableIfNotExists('access_tokens', function (table) {
       table.increments();
-      table.string('access_token', 512);
+      table.string('access_token', 1024);
       table.timestamps();
     });
   });
