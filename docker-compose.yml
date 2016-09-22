@@ -3,7 +3,8 @@ postgres:
 node:
   build: .
   volumes:
-    - .:/usr/src/app
+    - .:/code
+    - /code/node_modules
   links:
     - postgres
   environment:
