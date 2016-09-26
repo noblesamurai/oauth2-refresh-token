@@ -10,9 +10,12 @@ describe('oauth2-refresh-token', function() {
   before(function() {
     authRequests = nock(auth.tokenHost).post(auth.tokenPath).reply(200, {
       refresh_token: 'new_refresh_token',
-      access_token: 'new_access_token'
+      access_token: 'new_access_token',
     }).post(auth.tokenPath, {
-      refresh_token: 'new_refresh_token'
+      refresh_token: 'new_refresh_token',
+      grant_type: 'refresh_token',
+      client_id: 'tom',
+      client_secret: 'jeff'
     }).reply(200, {
       refresh_token: 'even_newer_refresh_token',
       access_token: 'even_newer_access_token'

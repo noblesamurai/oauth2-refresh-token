@@ -13,4 +13,4 @@ psql:
   image: postgres
   links:
     - postgres
-  command: psql
+  command: psql postgres://postgres@postgres

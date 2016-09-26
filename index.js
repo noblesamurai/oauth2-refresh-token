@@ -10,33 +10,32 @@ const knex = require('knex')(db),
     return migrated;
   }
 
-  function latestToken(type) {
+  function latestTokens() {
     return migrate().then(function() {
-      return knex(type + '_tokens').orderBy('id', 'desc').first(type + '_token').then(function(result) {
-        if (result) return result[type + '_token'];
-      });
+      return knex('tokens').orderBy('created_at', 'desc').first('refresh_token', 'access_token');
     });
   }
 
   function refresh() {
     return migrate().then(function() {
-      return latestToken('refresh').then(function(refreshToken) {
-        refreshToken = refreshToken || initialRefreshToken;
-        var token = oauth2.accessToken.create({ refresh_token: refreshToken });
+      return latestTokens();
+    }).then(function(tokens) {
+      refreshToken = tokens ? tokens.refresh_token : initialRefreshToken;
+      var token = oauth2.accessToken.create({ refresh_token: refreshToken });
 
-        return token.refresh().then(function(result) {
-          return Promise.all([
-            knex('access_tokens').insert({ access_token: result.token.access_token }),
-            knex('refresh_tokens').insert({ refresh_token: result.token.refresh_token})
-          ]);
-        });
+      return token.refresh().then(function(result) {
+        return knex('tokens').insert({ access_token: result.token.access_token, refresh_token: result.token.refresh_token});
       });
     });
   }
 
   return {
     refresh: refresh,
-    getAccessToken: latestToken.bind(null, 'access'),
+    getAccessToken: function() {
+      return latestTokens().then(function(tokens) {
+        if (tokens) return tokens.access_token;
+      });
+    },
     _knex: knex // in case you need to e.g. disconnect before shutting down.
   };
 };
