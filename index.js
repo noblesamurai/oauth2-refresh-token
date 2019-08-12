@@ -1,7 +1,8 @@
 module.exports = function(db, credentials, initialRefreshToken) {
 const knex = require('knex')(db),
       SimpleOAuth2 = require('simple-oauth2'),
-      oauth2 = SimpleOAuth2.create(credentials);
+      oauth2 = SimpleOAuth2.create(credentials),
+      debug = require('debug')('oauth2-refresh-token');
 
   var migrated;
   function migrate() {
@@ -24,7 +25,9 @@ const knex = require('knex')(db),
       var token = oauth2.accessToken.create({ refresh_token: refreshToken });
 
       return token.refresh().then(function(result) {
-        return knex('tokens').insert({ access_token: result.token.access_token, refresh_token: result.token.refresh_token});
+        const rec = ({ access_token: result.token.access_token, refresh_token: result.token.refresh_token });
+        debug('inserting new tokens', rec);
+        return knex('tokens').insert(rec);
       });
     });
   }
