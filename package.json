@@ -1,6 +1,6 @@
 {
   "name": "oauth2-refresh-token",
-  "version": "4.0.0-tokens.0",
+  "version": "4.0.0",
   "description": "Keeps oauth2 auth token refreshed, handles refresh token management.",
   "main": "index.js",
   "engines": {
