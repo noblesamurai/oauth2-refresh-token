@@ -1,6 +1,6 @@
 {
   "name": "oauth2-refresh-token",
-  "version": "3.1.0-tokens.0",
+  "version": "3.1.0-tokens.1",
   "description": "Keeps oauth2 auth token refreshed, handles refresh token management.",
   "main": "index.js",
   "scripts": {
