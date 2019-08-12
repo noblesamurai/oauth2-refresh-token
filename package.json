@@ -3,6 +3,9 @@
   "version": "3.1.0-tokens.1",
   "description": "Keeps oauth2 auth token refreshed, handles refresh token management.",
   "main": "index.js",
+  "engines": {
+    "node": "> 8.x"
+  },
   "scripts": {
     "pretest": "semistandard",
     "test": "mocha --recursive test"
