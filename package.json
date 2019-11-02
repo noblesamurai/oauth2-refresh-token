@@ -26,7 +26,7 @@
   "homepage": "https://github.com/noblesamurai/oauth2-refresh-token#readme",
   "dependencies": {
     "debug": "^2.2.0",
-    "knex": "^0.12.1",
+    "knex": "^0.20.1",
     "pg": "^6.1.0",
     "simple-oauth2": "^1.0.0"
   },
